@@ -15,8 +15,8 @@ public class Gmail extends Email {
         super(emailId);
 
         this.inboxCapacity=inboxCapacity;
-        inbox=new ArrayList<Mail>();
-        trash=new ArrayList<Mail>();
+        this.inbox=new ArrayList<Mail>();
+        this.trash=new ArrayList<Mail>();
     }
     public Gmail(String emailId){
         super(emailId);
@@ -41,6 +41,7 @@ public class Gmail extends Email {
             if(mail.getMessage().equals(message)){
                 inbox.remove(mail);
                 trash.add(mail);
+                break;
             }
         }
     }

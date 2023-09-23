@@ -38,20 +38,20 @@ public class Workspace extends Gmail{
 //            }
 //        }
 //        return maxMeetings;
-        Collections.sort(calendar, Comparator.comparing(Meeting::getEndTime));
+        Collections.sort(calendar, (m1, m2) -> m1.getStartTime().compareTo(m2.getStartTime()));
 
         int maxMeetings = 0;
-        LocalTime endTime = LocalTime.of(0, 0); // Initialize the end time to 00:00
+        LocalTime endTime = LocalTime.MIN;
 
         for (Meeting meeting : calendar) {
-            LocalTime startTime = meeting.getStartTime();
-            if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
+            if (meeting.getStartTime().compareTo(endTime) >= 0) {
                 maxMeetings++;
                 endTime = meeting.getEndTime();
             }
         }
 
         return maxMeetings;
+
 
     }
 }

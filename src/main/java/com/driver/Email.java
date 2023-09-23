@@ -26,9 +26,9 @@ public class Email {
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
 
-        if(oldPassword.equals(password)){
+        if(oldPassword.equals(this.password)){
             if(checkString(newPassword)){
-                password=newPassword;
+                this.password=newPassword;
             }
         }
 
@@ -54,7 +54,7 @@ public class Email {
             } else if ( !Character.isDigit(ch) && !Character.isLetter(ch) && !Character.isWhitespace(ch) ) {
                 specialFlag=true;
             }
-            if(numberFlag && specialFlag &&capitalFlag && lowerCaseFlag)
+            if(numberFlag && specialFlag && capitalFlag && lowerCaseFlag)
                 return true;
         }
         return false;
